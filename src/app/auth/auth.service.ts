@@ -21,7 +21,6 @@ export class AuthService {
   }
 
   isRegistered() {
-    console.log('this.user: ', this.user)
     return this.user !== undefined;
   }
 

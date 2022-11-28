@@ -34,7 +34,6 @@ export class LocalStoreService {
   }
 
   freeTranslationsAllowed() {
-    console.log('this.localStoreService.translationCnt', this.translationCnt);
     return this.translationCnt <= 3;
   }
 }
