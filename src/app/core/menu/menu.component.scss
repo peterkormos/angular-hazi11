@@ -1,0 +1,11 @@
+$bgColor: #1565C0;
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: $bgColor;
+}
+
+.logo {
+  height: 32px;
+}

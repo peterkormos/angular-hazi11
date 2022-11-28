@@ -1,0 +1,7 @@
+<mat-toolbar>
+  <img [src]="logoSrc" class="logo">
+  <button mat-icon-button *ngIf="user == undefined" routerLink="registration">
+    <mat-icon>login</mat-icon>
+  </button>
+  {{user}}
+</mat-toolbar>

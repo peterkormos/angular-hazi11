@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="translate()">
+  <mat-card>
+    <mat-card-content>
+      <button mat-button [disabled]="form.invalid">Frodítás</button>
+      <p></p>
+      <button mat-button (click)="detectLanguage()">Nyelv felismerése</button>
+      <br>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Forrás:</mat-label>
+        <mat-select formControlName="sourceLanguage">
+          <mat-option *ngFor="let language of languages" [value]="language.code">
+            {{language.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['sourceLanguage'].errors?.['required']">
+          Forrás nyelvet ki kell tölteni!
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Forrás szöveg</mat-label>
+        <textarea matInput formControlName="sourceText"></textarea>
+        <mat-error *ngIf="form.controls['sourceText'].errors?.['required']">
+          Forrás szöveget ki kell tölteni!
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <p></p>
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Cél:</mat-label>
+        <mat-select formControlName="targetLanguage">
+          <mat-option *ngFor="let language of languages" [value]="language.code">
+            {{language.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls['targetLanguage'].errors?.['required']">
+          Cél nyelvet ki kell tölteni!
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Fordított szöveg</mat-label>
+        <textarea matInput [value]="translation.translatedText"></textarea>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+</form>

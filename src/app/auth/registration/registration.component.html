@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-title>Regisztáció</mat-card-title>
+  <mat-card-content>
+    <div class="registration-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Név</mat-label>
+        <input matInput placeholder="Name" [(ngModel)]="user.name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" [(ngModel)]="user.email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Telefon</mat-label>
+        <input matInput placeholder="Telephone" [(ngModel)]="user.telephone">
+      </mat-form-field>
+      <mat-checkbox [(ngModel)]="dataUsageConsent">Elfogadom az adatkezelési nyilatkozatot</mat-checkbox>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="registration()" color="primary" [disabled]="!dataUsageConsent">Regisztáció</button>
+  </mat-card-actions>
+</mat-card>
