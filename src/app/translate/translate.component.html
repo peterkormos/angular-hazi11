@@ -1,6 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="translate()" class>
   <mat-card>
-    <mat-card-content>
+    <mat-card-content class="source">
       <button mat-button [disabled]="form.invalid">Frodítás</button>
       <p></p>
       <button mat-button (click)="detectLanguage()">Nyelv felismerése</button>

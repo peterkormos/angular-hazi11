@@ -1,14 +1,21 @@
 form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  align-items: flex-end;
 
-mat-card {
-  margin: 10px;
-  width: 500px;
-}
+  mat-card {
+    margin: 10px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
 
-mat-form-field {
-  width: 100%;
+    .source {
+      align-items: flex-end;
+      align-content: flex-end;
+    }
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
 }
