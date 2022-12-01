@@ -34,16 +34,25 @@ export class TranslateComponent implements OnInit {
   }
 
   translate() {
-    this.translateService.translate(this.form.value.sourceText, this.form.value.sourceLanguage!, this.form.value.targetLanguage!).subscribe(translation => {
-      this.translation = translation
+    this.translateService.translate(this.form.value.sourceText, this.form.value.sourceLanguage!, this.form.value.targetLanguage!).subscribe
+      ({
+        next: translation => {
+          this.translation = translation
 
-      if (this.translation.error) {
-        this.snackBar.open(this.translation.error, 'OK', { duration: 5000 })
-      } else
-        if (!this.localStoreService.freeTranslationsAllowed() && !this.localStoreService.isUserRegistered()) {
-          this.router.navigateByUrl(RegistrationPath);
-        }
-    });
+          if (this.translation.error) {
+            this.handleError(this.translation.error);
+          } else
+            if (!this.localStoreService.freeTranslationsAllowed() && !this.localStoreService.isUserRegistered()) {
+              this.router.navigateByUrl(RegistrationPath);
+            }
+        },
+        error: () => this.handleError()
+      }
+      );
+  }
+
+  handleError(errorMessage?: string) {
+    this.snackBar.open(errorMessage ? errorMessage : 'Valami elromlott a fordítás során...', 'OK', { duration: 5000 })
   }
 
   detectLanguage() {
