@@ -24,6 +24,10 @@ export class LocalStoreService {
     }
   }
 
+  isUserRegistered() {
+    return this.user !== undefined;
+  }
+
   set translationCnt(translationCnt: number) {
     localStorage.setItem(this.translationCntKey, "" + (translationCnt++));
   }

@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.localStoreService.freeTranslationsAllowed() || this.authService.isRegistered()) {
+    if (this.localStoreService.freeTranslationsAllowed() || this.localStoreService.isUserRegistered()) {
       return true;
     }
     else {

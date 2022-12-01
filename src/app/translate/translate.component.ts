@@ -40,13 +40,17 @@ export class TranslateComponent implements OnInit {
       if (this.translation.error) {
         this.snackBar.open(this.translation.error, 'OK', { duration: 5000 })
       } else
-        if (!this.localStoreService.freeTranslationsAllowed()) {
+        if (!this.localStoreService.freeTranslationsAllowed() && !this.localStoreService.isUserRegistered()) {
           this.router.navigateByUrl(RegistrationPath);
         }
     });
   }
 
   detectLanguage() {
-    this.translateService.detect(this.form.value.sourceText).subscribe((languageDetections: LanguageDetection[]) => this.form.value.sourceLanguage = languageDetections[0].language);
+    this.translateService.detect(this.form.value.sourceText).subscribe((languageDetections: LanguageDetection[]) => this.form.setValue({
+      sourceLanguage: languageDetections[0].language,
+      sourceText: this.form.value.sourceText,
+      targetLanguage: ''
+    }));
   }
 }

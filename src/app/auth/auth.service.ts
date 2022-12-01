@@ -20,10 +20,6 @@ export class AuthService {
     this._currentUser.next(user);
   }
 
-  isRegistered() {
-    return this.user !== undefined;
-  }
-
   get user() {
     return this._currentUser.getValue();
   }
