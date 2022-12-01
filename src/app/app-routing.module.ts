@@ -19,7 +19,6 @@ const routes: Routes = [
   {
     path: TranslatePath,
     loadChildren: () => import('./translate/translate.module').then(m => m.TranslateModule),
-    runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard]
   }
 
